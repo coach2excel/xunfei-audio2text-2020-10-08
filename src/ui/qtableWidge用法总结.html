@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+pyqt中的qtableWidge用法总结（获取行数、列数、指针、内容等）持续更新~
+
+qtableWidge中的行和列是从0开始的
+***************
+self.tableWidget.itemClicked.connect(self.outSelect)#单击获取单元格中的内容
+    def outSelect(self, Item=None):
+        if Item==None:
+            return
+        print(Item.text())
+***************
+self.tableWidget.setRowCount(row_num)#设置表格的行数
+self.tableWidget.setColumnCount(col_num)#设置表格的列数
+***************
+self.tableWidget.columnCount()#获取当前表格共有多少列
+self.tableWidget.rowCount()#获取当前表格共有多少行
+***************
+self.tableWidget.currentColumn()#获取当前选中的列
+self.tableWidget.currentRow()#获取当前选中的行
+***************
+self.tableWidget.removeColumn(col)#删除指定列
+self.tableWidget.removeRow(col)#删除指定行
+***************
+self.tableWidget.verticalHeader().setVisible(False)#隐藏列表头
+self.tableWidget.horizontalHeader().setVisible(False)#隐藏行表头
+***************
+self.tableWidget.setSelectionBehavior(QAbstractItemView.SelectColumns)#设置为选择整列
+self.tableWidget.setSelectionBehavior(QAbstractItemView.SelectRows)#设置选择整行
+***************
+item_data = QTableWidgetItem(None)
+self.tableWidget.setItem(row,col,item_data)#设置item信息
+***************
+self.tableWidget.item(d_row,d_col).text()#获取某行某列item中的x信息
+***************
+self.tableWidget.clearContents()#清空tablewidger中的内容，不包括表头
+self.tableWidget.clear()#清楚所有包括表头
+***************
+col_num = self.tableWidget.columnCount()#获取当前的列数
+row_num = self.tableWidget.rowCount()#获取当前的列数
+self.tableWidget.setRowCount(row_num + 1)#添加一行
+self.tableWidget.setColumnCount(col_num + 1)#添加一列
+***************
+if self.tableWidget.item(d_row,d_col) == None#判断指针是否为None（当新增加一行时，如果没有设置item信息，需要首先判断item是否为空）
+***************
+data_it =QTableWidgetItem(）#（）里面为表格中的元素
+data_it.setFlags(Qt.ItemIsSelectable | Qt.ItemIsEnabled)#设置为item不可被编辑
+————————————————
+版权声明：本文为CSDN博主「春风若是你」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/weixin_43245453/article/details/96591959
+</body>
+</html>
